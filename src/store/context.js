@@ -1,12 +1,13 @@
 import React from 'react'
 
-import { useLogger } from '../hooks/useLogger'
 import { initState, reducer } from './reducer'
+import { combineMiddleware } from './combineMiddleware'
 
 const Store = React.createContext()
 
-export const Provider = ({ children }) => {
-    const value = useLogger(React.useReducer(reducer, initState))
+export const Provider = ({ children, middleware }) => {
+    const combined = combineMiddleware(middleware)
+    const value = combined(React.useReducer(reducer, initState))
     return <Store.Provider value={value}>{children}</Store.Provider>
 }
 
