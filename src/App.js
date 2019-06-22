@@ -1,13 +1,13 @@
 import React from 'react'
 import { useStore } from './store/context'
-import { setName } from './store/actions'
+import { incrementCount } from './store/actions'
 
 const mapState = state => ({
-    userName: state.name
+    count: state.count
 })
 
 const mapDispatch = {
-    setName
+    incrementCount
 }
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
     return (
         <main>
             <h1>Hook Playground</h1>
-            <p>Name: {store.userName}</p>
-            <button onClick={() => store.setName('Anne')}>Change name</button>
+            <p>Count: {store.count}</p>
+            <button onClick={store.incrementCount}>+1</button>
         </main>
     )
 }
