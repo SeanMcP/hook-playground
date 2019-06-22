@@ -1,11 +1,12 @@
 import React from 'react'
 
+import { useLogger } from '../hooks/useLogger'
 import { initState, reducer } from './reducer'
 
 const Store = React.createContext()
 
 export const Provider = ({ children }) => {
-    const value = React.useReducer(reducer, initState)
+    const value = useLogger(React.useReducer(reducer, initState))
     return <Store.Provider value={value}>{children}</Store.Provider>
 }
 
