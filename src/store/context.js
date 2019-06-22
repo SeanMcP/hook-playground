@@ -41,5 +41,5 @@ export const useStore = (mapState, mapDispatch) => {
         }
     }
 
-    return store
+    return [store, dispatch]
 }

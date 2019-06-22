@@ -11,7 +11,7 @@ const mapDispatch = {
 }
 
 function App() {
-    const store = useStore(mapState, mapDispatch)
+    const [store] = useStore(mapState, mapDispatch)
     return (
         <main>
             <h1>Hook Playground</h1>
