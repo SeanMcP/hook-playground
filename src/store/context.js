@@ -25,9 +25,11 @@ export const useStore = (mapState, mapDispatch) => {
     switch (typeof mapDispatch) {
         case 'object': {
             for (const action in mapDispatch) {
-                store[action] = (...args) => {
-                    mapDispatch[action](...args)(dispatch, getState)
-                }
+                store[action] =
+                    typeof mapDispatch[action]() === 'function'
+                        ? (...args) =>
+                              mapDispatch[action](...args)(dispatch, getState)
+                        : (...args) => dispatch(mapDispatch[action](...args))
             }
             break
         }

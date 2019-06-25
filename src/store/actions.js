@@ -4,11 +4,14 @@ export const ACTION = {
 }
 
 export const incrementCount = () => {
-    return dispatch => {
-        dispatch({
-            type: ACTION.INCREMENT_COUNT
-        })
+    return {
+        type: ACTION.INCREMENT_COUNT
     }
+    // return dispatch => {
+    //     dispatch({
+    //         type: ACTION.INCREMENT_COUNT
+    //     })
+    // }
 }
 
 export const setName = name => {
